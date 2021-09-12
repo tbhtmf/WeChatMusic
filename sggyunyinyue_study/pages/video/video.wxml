@@ -1,0 +1,97 @@
+<!--pages/video/video.wxml-->
+<view class="videoContainer">
+    <!-- 头部区域 -->
+    <view class="header">
+        <image src="/static/images/video/video.jpg"></image>
+        <view class="search" bindtap="toSearch"><!--这是假的搜索框，点击它是要跳转到真的搜索界面的-->
+            搜索音乐
+        </view>
+        <image src="/static/images/logo.png"></image>
+    </view>
+
+    <!-- 导航区域 -->
+    <scroll-view scroll-x class="navScroll" enable-flex scroll-into-view="{{'scroll' + navId}}" scroll-with-animation="{{true}}">
+        <view id="{{'scroll' + item.id}}" class="navItem" wx:for="{{videoGroupList}}" wx:key="id"><!--需要遍历多个navItem,所以用wx:for和wx:key-->
+            <view class="navContent {{navId === item.id?'active': ''}}" bindtap="changeNav" id="{{item.id}}"><!--注意：加上active的文本下面才能显示横线-->
+                <!-- 推荐 -->
+                {{item.name}}
+            </view>
+        </view>
+
+        <!-- <view class="navItem">
+            <view class="navContent">
+                万有引力
+            </view>
+        </view>
+        <view class="navItem">
+            <view class="navContent">
+                推荐
+            </view>
+        </view>
+        <view class="navItem">
+            <view class="navContent">
+                万有引力
+            </view>
+        </view>
+        <view class="navItem">
+            <view class="navContent">
+                推荐
+            </view>
+        </view>
+        <view class="navItem">
+            <view class="navContent">
+                万有引力
+            </view>
+        </view> -->
+    </scroll-view>
+
+
+    <!-- 视频列表区域 -->
+     <!-- bindscrolltolower="handleToLower"指绑定这个事件 -->
+  <scroll-view
+      scroll-y
+      class="videoScroll"
+      refresher-enabled
+      bindrefresherrefresh="handleRefresher"
+      refresher-triggered="{{isTriggered}}"
+      bindscrolltolower="handleToLower"
+  >
+    <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
+      <video
+          src="{{item.data.urlInfo.url}}"
+          bindplay="handlePlay"
+          id="{{item.data.vid}}"
+          poster="{{item.data.coverUrl}}"
+          class="common"
+          object-fit="cover"
+          wx:if='{{videoId === item.data.vid}}'
+          bindtimeupdate="handleTimeUpdate"
+          bindended="handleEnded"
+      ></video>
+
+      <!-- 性能优化：使用image图片代替video标签 -->
+      <image wx:else bindtap="handlePlay" id="{{item.data.vid}}" class="common" src="{{item.data.coverUrl}}"></image>
+
+
+      <view class="content">{{item.data.title}}</view>
+
+      <view class="footer">
+        <image class="avatar" src="{{item.data.creator.avatarUrl}}"></image>
+        <text class="nickName">{{item.data.creator.nickname}}</text>
+        <view class="comments_praised">
+          <text class="item">
+            <text class="iconfont icon-dianzan"></text>
+            <text class="count">{{item.data.praisedCount}}</text>
+          </text>
+          <text class="item">
+            <text class="iconfont icon-pinglun"></text>
+            <text class="count">{{item.data.commentCount}}</text>
+          </text>
+          <button open-type="share" class="item btn"><!--显示页面的三个点-->
+            <text class="iconfont icon-gengduo"></text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

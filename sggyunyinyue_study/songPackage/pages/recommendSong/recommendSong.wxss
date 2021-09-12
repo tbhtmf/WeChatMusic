@@ -1,0 +1,92 @@
+.recommendSongContainer .header{
+    position: relative;
+    width: 100%;
+    height: 300rpx;
+}
+
+.recommendSongContainer .header image{
+    width: 100%;
+    height: 100%;
+}
+
+.recommendSongContainer .header .date{
+    /* 将日期文本区域放到父元素的垂直居中位置即可 */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -140rpx; /* 上面设置的50%、50%是以父元素的中心为原点，所以要在这里往左边和上边拉*/
+    margin-top: -40rpx;
+
+    width: 300rpx;
+    height: 100rpx;
+    /* border: 1rpx solid red; */
+    text-align: center;/* 控制框里面的日期文本在水平线垂直居中 */
+    line-height: 100rpx;
+    color: #fff;
+}
+
+.header .date .day{
+    font-size: 38rpx;
+}
+
+
+
+
+/* 列表区域 */
+.ListContainer{
+    position: relative;
+    top: -20rpx;
+    padding: 0 20rpx;/*让左右两边有一定的间距。意思是上下为0，左右为20rpx*/
+    border-radius: 30rpx;
+    background: #fff;
+}
+.listHeader{
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.listHeader .changeMore{
+    float: right;
+}
+
+/* 内容区 */
+.listScroll{
+    height: calc(100vh - 380rpx);
+}
+.scrollItem{
+    position: relative;
+    display: flex;
+    margin-bottom: 20rpx;
+}
+.scrollItem image{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 8rpx;
+}
+
+.musicInfo{
+    display: flex;
+    flex-direction: column;/*纵向排列*/
+    margin-left: 20rpx;/*让文本不要与图片挨得太近*/
+}
+.musicInfo text{
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 24rpx;
+
+    /*单行文本溢出用省略号代替。 防止老外的歌名或者任命太长换行到下面 */
+    max-width: 500rpx;
+    white-space: nowrap;/*超出部分不允许换行*/
+    overflow: hidden;/*超出部分隐藏掉*/
+    text-overflow: ellipsis;/*隐藏掉的部分用省略号代替*/
+}
+
+/* 设置三个点到右边 */
+.scrollItem .iconfont{
+    position: absolute;
+    right: 0;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    /* background: red;测试三个点的区域多大 */
+    text-align: right;/*让三个点靠右一点*/
+}

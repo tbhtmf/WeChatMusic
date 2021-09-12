@@ -1,0 +1,162 @@
+<view class="indexContainer">
+  <!-- 轮播图区域 -->
+  <swiper class="banners" indicator-dots='true' indicator-color='ivoty' indicator-active-color='#d43c33'>
+    <swiper-item wx:for="{{bannerList}}" wx:key="bannerId">
+      <!-- <image src="/static/images/nvsheng.jpg"></image> -->
+      <image src="{{item.pic}}"></image>
+    </swiper-item>
+    <!-- <swiper-item>
+      <image src="/static/images/nvsheng.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/static/images/nvsheng.jpg"></image>
+    </swiper-item> -->
+  </swiper>
+
+<!-- 五个图标导航区域 -->
+  <view class="navContainer">
+    <view class="navItem" bindtap="toRecommendSong">
+      <text class="iconfont icon-tuijian"></text>
+      <text>每日推荐</text>
+    </view>
+    <view class="navItem"  bindtap="toOther" >
+      <text class="iconfont icon-songlist-01"></text>
+      <text>Other页面(歌单)</text>
+    </view>
+    <view class="navItem" >
+      <text class="iconfont icon-paihangbang"></text>
+      <text>排行榜</text>
+    </view>
+    <view class="navItem" >
+      <text class="iconfont icon-diantaizhibo"></text>
+      <text>电台</text>
+    </view>
+    <view class="navItem" >
+      <text class="iconfont icon-zhibo"></text>
+      <text>直播</text>
+    </view>
+  </view>
+
+  <!-- 推荐歌曲区域 -->
+  <view class="recommendContainer">
+    <!-- 头部区域 -->
+    <!-- ========使用组件代码=========== -->
+    <NavHeader title="推荐歌曲" nav="为你精心推荐"></NavHeader>
+
+    <!-- ========未使用组件代码=========== -->
+    <!-- <view class="header">
+      <text class="title">推荐歌曲</text>
+      <view>
+        <text>为你精心推荐</text>
+        <text class="more">查看更多</text>
+      </view>
+    </view> -->
+    <!-- ==================== -->
+
+    <!-- 内容区 -->
+    <scroll-view class="reCommendScroll" enable-flex scroll-x>
+      <!--  wx:for-item就是修改原来默认的数组默认变量名item，recommendItem是自定义的名字 -->
+      <view class="scrollItem" wx:for="{{recommendList}}" wx:key="id" wx:for-item="recommendItem">
+        <!--原来为了测试方便，写静态的 -->
+        <!-- <image src="/static/images/nvsheng.jpg" ></image> -->
+        <!-- <text>喜欢超级好听、好看的清新脱俗小歌单</text> -->
+
+        <!-- 把原来静态的改为动态的 -->
+        <image src="{{recommendItem.picUrl}}" ></image>
+        <text>{{recommendItem.name}}</text>
+      </view>
+      <!-- <view class="scrollItem">
+        <image src="/static/images/nvsheng.jpg" ></image>
+        <text>喜欢超级好听、好看的清新脱俗小歌单</text>
+      </view>
+      <view class="scrollItem">
+        <image src="/static/images/nvsheng.jpg" ></image>
+        <text>喜欢超级好听、好看的清新脱俗小歌单</text>
+      </view>
+      <view class="scrollItem">
+        <image src="/static/images/nvsheng.jpg" ></image>
+        <text>喜欢超级好听、好看的清新脱俗小歌单</text>
+      </view>
+      <view class="scrollItem">
+        <image src="/static/images/nvsheng.jpg" ></image>
+        <text>喜欢超级好听、好看的清新脱俗小歌单</text>
+      </view>
+      <view class="scrollItem">
+        <image src="/static/images/nvsheng.jpg" ></image>
+        <text>喜欢超级好听、好看的清新脱俗小歌单</text>
+      </view> -->
+    </scroll-view> 
+  </view>
+
+  <!-- 排行榜区域 -->
+  <view class="topList">
+    <!-- 头部区域 -->
+      <!-- ========使用组件代码=========== -->
+     <NavHeader title="排行榜" nav="热歌风向标"></NavHeader>
+    
+    <!-- 内容区域 -->
+    <swiper class="topListSwiper" circular next-margin="50rpx" previous-margin="50rpx">
+      <swiper-item wx:for="{{topList}}" wx:key="name"><!--wx:for="{{topList}}"意思是遍历生成多个swiper-item-->
+        <view class="swiperItem">
+          <!-- <view class="title">云音乐热歌榜</view> -->
+          <view class="title">{{item.name}}</view>
+          <view class="musicItem" wx:for="{{item.tracks}}" wx:key="id" wx:for-item="musicItem">
+            <!-- 这部分有一张图，一个文本，水平排列 -->
+            <!-- <image src="/static/images/nvsheng.jpg"></image>在没有图的时候就先用这张图代替 
+            <text class="count">1</text>
+            <text class="musicName">恒山</text> -->
+
+            <image src="{{musicItem.al.picUrl}}"></image>
+            <text class="count">{{index + 1}}</text>
+            <text class="musicName">{{musicItem.name}}</text>
+          </view>
+          
+        </view>
+      </swiper-item>
+
+      <!-- 以下的内容是刚开始没有用接口时复制的，用了接口后就不用了 -->
+      <!-- <swiper-item > 
+        <view class="swiperItem">
+          <view class="title">云音乐热歌榜</view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">1</text>
+            <text class="musicName">恒山</text>
+          </view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">2</text>
+            <text class="musicName">剑谪仙</text>
+          </view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">3</text>
+            <text class="musicName">落花无朝</text>
+          </view>
+        </view>
+      </swiper-item>
+
+      <swiper-item >
+        <view class="swiperItem">
+          <view class="title">云音乐热歌榜</view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">1</text>
+            <text class="musicName">恒山</text>
+          </view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">2</text>
+            <text class="musicName">剑谪仙</text>
+          </view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">3</text>
+            <text class="musicName">落花无朝</text>
+          </view>
+        </view>
+      </swiper-item> -->
+    </swiper>
+  </view>
+</view>
+

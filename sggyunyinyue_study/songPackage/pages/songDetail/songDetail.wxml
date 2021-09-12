@@ -1,0 +1,38 @@
+<view class="songDetailContainer">
+  <view class="author">{{song.ar[0].name}}</view><!--歌曲作者-->
+  <view class="circle"></view>
+  <!-- 在小程序中要写动态的class，就加{{}} 。意思是当isPlay为true，即播放的时候，用动态class把needleRotate摇杆放下来，needleRotate已经在样式中设置为0度-->
+  <image class="needle {{isPlay && 'needleRotate'}}" src="/static/images/song/needle.png"></image><!--摇杆-->
+
+  <view class="discContainer {{isPlay && 'discAnimation'}}">
+    <image class="disc" src="/static/images/song/disc.png"></image>
+    <image class="musicImg" src="{{song.al.picUrl}}"></image>
+  </view>
+
+  <!-- 进度条控制区域 -->
+  <view class="progressControl">
+  <!-- 先静态测试 -->
+    <!-- <text >00:00</text> -->
+    <!-- 动态获取数据 -->
+    <text>{{currentTime}}</text>
+    <!-- 总进度条 -->
+    <view class="barControl">
+      <!-- 实时进度条 -->
+      <view class="audio-currentTime-Bar" style="width: {{currentWidth + 'rpx'}}">
+        <!-- 小圆球 -->
+        <view class="audio-circle"></view>
+      </view>
+    </view>
+    <text>{{durationTime}}</text><!--总时长-->
+  </view>
+  <!-- 底部控制播放区域 -->
+  <view class="musicControl">
+    <text class="iconfont icon-zhongbo"></text>
+    <text class="iconfont icon-047caozuo_shangyishou" id="pre" bindtap="handleSwitch"></text>
+    <!-- big表示这里大一点 。bindtap="handleMusicPlay"的意思是点击播放按钮可以播放和暂停-->
+    <text class="iconfont {{isPlay?'icon-zanting': 'icon-bofang'}} big" bindtap="handleMusicPlay"></text>
+    <text class="iconfont icon-xiayishouweidianji" id="next" bindtap="handleSwitch"></text>
+    <text class="iconfont icon-bofangduilie"></text>
+  </view>
+</view>
+ 

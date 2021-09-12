@@ -1,0 +1,62 @@
+<view class="recommendSongContainer">
+<!-- 头部 -->
+<view class="header">
+    <image src="/static/images/recommendSong/recommendSong.jpg"></image>
+    <view class="date" >
+        <!-- 这是静态的 -->
+        <!-- <text class="day">12/</text>
+        <text class="month">10</text> -->
+
+        <!-- 这是动态的 -->
+        <text class="month">{{month}} / </text>
+        <text class="day">{{day}}</text>
+    </view>
+</view>  
+
+<!-- 列表区域 -->
+<view class="ListContainer">
+    <view class="listHeader">
+        <text >播放全部</text>
+        <text class="changeMore">多选</text>
+    </view>
+
+    <!-- 内容区 -->
+    <scroll-view scroll-y class="listScroll">
+        <view class="scrollItem" wx:for="{{recommendList}}" wx:key="id" data-index="{{index}}" data-song="{{item}}" bindtap="toSongDetail">
+            <!-- 静态测试数据 -->
+            <!-- <image src="/static/images/nvsheng.jpg" /> -->
+            <image src="{{item.album.picUrl}}" />
+
+            <view class="musicInfo">
+                <!-- 静态测试数据 -->
+                <!-- <text class="musicName">光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月</text>
+                <text class="author">bey</text> -->
+                <text class="musicName">{{item.name}}</text>
+                <text class="author">{{item.artists[0].name}}</text><!--如果在开发中要把所有作者显示出来，就要对数组进行遍历-->
+            </view>
+            <text class="iconfont icon-gengduo"></text>
+        </view>
+
+        <!-- 模拟数据。用来调试样式 -->
+        <!-- <view class="scrollItem">
+            <image src="/static/images/nvsheng.jpg" />
+            <view class="musicInfo">
+                <text class="musicName">光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月</text>
+                <text class="author">bey</text>
+            </view>
+            <text class="iconfont icon-gengduo"></text>
+        </view>
+
+        <view class="scrollItem">
+            <image src="/static/images/nvsheng.jpg" />
+            <view class="musicInfo">
+                <text class="musicName">光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月</text>
+                <text class="author">bey</text>
+            </view>
+            <text class="iconfont icon-gengduo"></text>
+        </view> -->
+
+        
+    </scroll-view>
+</view>
+</view> 

@@ -1,0 +1,142 @@
+/* pages/search/search.wxss */
+.searchContainer {
+    padding: 0 20rpx;
+  }
+  .header {
+    display: flex;/*因为要水平布局，所以写flex*/
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 10rpx 0;
+  }
+  
+  .searchInput {
+    position: relative;
+    flex: 1;
+    background: rgba(237, 237, 237, 0.3);
+    border-radius: 30rpx;
+  }
+  
+  .clear {
+    position: absolute;/*因为清空按钮始终在右边，就让他相对searchInput定位*/
+    right: 30rpx;
+    z-index: 10;
+    top: 0;
+    font-size: 30rpx;
+  
+  }
+  .cancel { 
+    width: 100rpx;
+    text-align: center;
+  }
+  
+  
+  .searchIcon {
+    position: absolute;
+    left: 15rpx;
+  }
+  .searchInput input {
+    margin-left: 60rpx;/*使搜索框离左边框预留一点位置*/
+    height: 60rpx
+  }
+  .placeholder{
+    /*color: #d43c33;*/
+    font-size: 28rpx;
+  }
+  
+  
+  /* 热搜榜 */
+  .hotContainer {
+    margin-top: 30rpx;
+  
+  }
+  .hotContainer .title {
+    font-size: 28rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 1rpx solid #eee;
+  }
+  
+  .hotList {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .hotItem {
+    width: 50%;/*因为左右只有两边，所以为50%*/
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+  }
+  
+  .hotItem .order {
+    margin: 0 10rpx;
+  }
+  
+  
+  .hotItem .iconImg {
+    width: 35rpx;
+    height: 20rpx;
+    margin-left: 10rpx;
+  }
+  
+  
+  
+  /* 搜索内容展示 */
+  .searchContent {
+    color: #d43c33;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 24rpx;
+    border-bottom: 1rpx solid #d43c33;
+  
+  }
+  .searchItem {
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+  }
+  .searchItem .content {
+    flex: 1;/*多余的宽度都给它*/
+    margin-left: 20rpx;
+    border-bottom: 1rpx solid #eee;/*底色边框*/
+    font-size: 26rpx;
+  }
+  
+  
+  /* 搜索历史 */
+  .history {
+    position: relative;
+    display: flex;/*因为是流式布局，就用flex*/
+    flex-wrap: wrap;/*有多行就自动换行*/
+    line-height:  50rpx;
+    margin: 20rpx 0;
+  }
+  .history .title {
+    font-size: 28rpx;
+    height: 50rpx;
+  }
+  .history .historyItem {
+    height: 50rpx;
+    font-size: 26rpx;
+    background: #ededed;
+    margin-left: 20rpx;/*设置外边距。各个个体之间的距离*/
+    padding: 0 30rpx;
+    border-radius: 20rpx;
+    margin-bottom: 20rpx;
+  }
+  .history .delete {
+    position: absolute;
+    bottom: 10rpx;
+    right: 15rpx;
+    font-size: 36rpx;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

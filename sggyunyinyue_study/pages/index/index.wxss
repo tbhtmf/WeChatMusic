@@ -1,0 +1,132 @@
+/* pages/index/index.wxss */
+.banners{
+  width: 100%;
+  height: 300rpx;
+}
+
+.banners image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 五个图标导航区域 */
+.navContainer{
+  display: flex;/*让五个图标的文字水平排列*/
+}
+
+.navItem{
+  display: flex;/*flex可以嵌套，所以这里可以写*/
+  flex-direction: column;/*纵向布局*/
+  align-items: center;
+  width: 20%;
+}
+
+.navItem .iconfont{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100rpx;
+  background: rgb(240, 19, 19);
+  font-size: 50rpx;
+  color: #fff;
+  margin: 20rpx 0;
+}
+
+.navItem text{
+  font-size: 26rpx;
+}
+
+/* 推荐歌曲*/
+.recommendContainer{
+  padding: 20rpx;/*让“推荐歌曲”的字与左边有一点间距*/
+}
+.recommendContainer .header{
+  padding-bottom: 20rpx;/*使头部与下面推荐内容区有一定的间隔*/
+}
+.recommendContainer .header .title{
+  font-size: 32rpx;
+  line-height: 80rpx;
+  color: #666;
+}
+.recommendContainer .header .more{
+  float: right;
+  border: 1rpx solid #333;
+  padding: 10rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+}
+
+
+/* 推荐内容区 */
+.reCommendScroll{
+  display: flex;/*横向排列。根据scroll-view，想要使用flex布局，需要在index.wxml中把enable-flex设置为true*/
+  height: 300rpx;
+}
+.scrollItem{
+  width: 200rpx;
+  margin-right: 20rpx;/*使推荐内容区的图标不要挨得太近*/
+}
+.scrollItem image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+.scrollItem text{
+  font-size: 26rpx;
+  /* 单行文本溢出隐藏，省略号代替 */
+  /* display: block;*//*overflow是作用在块级元素上，而text是内联元素，内联元素靠子元素撑开，它没有能力去切割子元素 */
+  /* （下面就是单行文本溢出的三件套） */
+ /* white-space: nowrap;*//*不让它换行*/
+  /*overflow: hidden;*//*超出部分隐藏掉*/
+  /*text-overflow: ellipsis;*//*用省略号代替*/
+
+  /* 多行文本溢出隐藏，省略号代替 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;/*设置对齐模式*/
+  -webkit-line-clamp: 2;/*设置盒子的行数（设置多行的行数）*/
+}
+
+/* 排行榜 */
+.topList{
+  padding: 20rpx;
+}
+.topListSwiper{
+  height: 400rpx;
+}
+.swiperItem{
+  width: 96%;
+  background: #fbfbfb;
+}
+.swiperItem .title{
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
+.musicItem{
+  /* 当一个元素设置为flex，其子元素会自动成为block元素（即块元素） */
+  display: flex;
+  margin-bottom: 20rpx;/*使图片上下之间有一定的间距*/
+}
+.musicItem image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 6rpx;
+}
+.musicItem .count{
+  width: 100rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.musicItem .musicName{
+  height: 100rpx;
+  line-height: 100rpx;
+
+  /* 以下处理文本溢出 */
+  max-width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

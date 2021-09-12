@@ -1,0 +1,164 @@
+@import "/static/iconfont/iconfont.wxss";
+page {
+  height: 100%;
+}
+
+.songDetailContainer {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;/*纵向排列 */
+  align-items: center;/*x轴的对齐方式：水平居中*/
+}
+
+/* 底座 */
+.circle {
+  position: relative;
+  z-index: 100;/*设置底座的层级，要高于摇杆*/
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #fff;
+  margin: 10rpx 0;
+}
+/* 摇杆 */
+.needle {
+    /* 使摇杆的支点水平居中 */
+  position: relative;
+  left: 60rpx;
+  width: 192rpx;
+  height: 274rpx;
+  z-index: 99;/*设置摇杆的层级，要低于底座，才能使底座的图片覆盖覆盖摇杆的半个圆，否则会出现阴影*/
+  top: -40rpx;
+
+  /* 设置摇杆的动画效果 */
+  transform-origin: 40rpx 0;/*设置旋转的中心点，x轴往右偏移40rpx，y轴不动为0*/
+  transform: rotate(-20deg);/*逆时针旋转20度*/
+  transition: transform 1s;/*摇杆过渡时长*/
+}
+
+.needleRotate {
+  transform: rotate(0deg);/*设置摇杆角度为0度*/
+}
+
+
+/* 磁盘 */
+.discContainer {
+  position: relative;
+  top: -170rpx;
+  width: 598rpx;
+  height: 598rpx;
+}
+
+.discAnimation {
+  animation: disc 4s linear infinite;/*动画属性名称为disc，过渡时长是4秒，linear是平缓过渡，infinite表示无限循环，这里表示动画帧一直在重复进行*/
+  animation-delay: 1s;/*根据常识：在摇杆落下后，磁盘才开始转*/
+}
+
+/*
+  @keyframes: 设置动画帧
+    1) from to
+      - 使用于简单的动画，只有起始帧和结束帧
+      - 北京 - 上海  直达
+    2) 百分比
+      - 多用于复杂的动画，动画不止两帧
+      - 北京 - 上海 ---> 北京 -- 天津 --- 深圳 --- 上海
+      - 0% - 100%, 中间有多少帧，可以任意拆分
+
+*/
+
+@keyframes disc {
+  from {
+    transform: rotate(0deg);/*起始帧是静态的也可以不用写*/
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.disc {
+  width: 598rpx;
+  height: 598rpx;
+}
+
+
+.musicImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 370rpx;
+  height: 370rpx;
+  border-radius: 50%;
+}
+
+
+/* 底部控制区域 */
+.musicControl {
+  position: absolute;
+  bottom: 40rpx;
+  left: 0;
+  border-top: 1rpx solid #fff;
+  width: 100%;
+  display: flex;
+
+}
+
+.musicControl  text {
+  width: 20%;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 50rpx;
+}
+
+.musicControl  text.big{
+  font-size: 80rpx;
+}
+
+
+/* 进度条控制区域 */
+.progressControl {
+  position: absolute;
+  bottom: 200rpx;
+  width: 640rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+}
+
+/* 总进度条 */
+.barControl {
+  position: relative;
+  width: 450rpx;
+  height: 4rpx;
+  background: rgba(0, 0, 0, 0.4);
+  margin: auto;
+}
+
+/* 实时进度条 */
+.audio-currentTime-Bar {
+  position: absolute;/*因为要压在总进度条上面，所以这样写*/
+  top: 0;
+  left: 0;
+  z-index: 1;/*为了压总进度条没有问题，把层级提高一点*/
+  height: 4rpx;
+  background: red;
+
+}
+
+
+/* 小圆球 */
+.audio-circle {
+  position: absolute;/*要相对于实时进度条摆放在右侧*/
+  right: -12rpx;
+  top: -4rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #fff;
+}

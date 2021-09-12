@@ -1,0 +1,50 @@
+<view class="searchContainer">
+  <!-- 头部搜索区域 -->
+  <view class="header">
+    <view class="searchInput">
+      <text class="iconfont icon-icon_search searchIcon"></text><!--searchIcon是定义的一个类，用于样式表中，不是iconfont图标-->
+      <input type="text" value="{{searchContent}}" placeholder="{{placeholderContent}}" placeholder-class="placeholder" bindinput="handleInputChange"/>
+      <text class="clear" bindtap="clearSearchContent" hidden="{{!searchContent}}">X</text><!--hidden相当于vue中的v-show。!searchContent表示没有值为false，false就隐藏-->
+    </view>
+    <text class="cancel">取消</text>
+  </view>
+
+  <block wx:if='{{searchList.length}}'><!--判断searchList数组里面是否有值。如果大于0，显示这里的内容，否则显示下面的内容-->
+   <!-- 搜索内容展示 -->
+   <view class="showSearchContent">
+     <view class="searchContent">搜索内容: {{searchContent}}</view><!--searchContent是用户输入的表单项数据-->
+     <view class="searchList">
+       <!--找这里面的唯一值给wx:key， http://localhost:3000/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA&limit=10 -->
+       <view class="searchItem" wx:for="{{searchList}}" wx:key="id">
+         <text class="iconfont icon-icon_search"></text>
+         <text class="content">{{item.name}}</text>
+       </view>
+     </view>
+   </view>
+  </block>
+
+
+  <block wx:else>
+    <!-- 搜索历史记录 -->
+    <view class="history" wx:if="{{historyList.length}}"><!--historyList.length表示如果大于0就显示，小于0就不显示-->
+      <view class="title">历史</view>
+      <view class="historyItem" wx:for="{{historyList}}" wx:key="{{item}}">
+        {{item}}
+      </view>
+      <!-- 删除 -->
+      <text class="iconfont icon-shanchu delete" bindtap="deleteSearchHistory"></text>
+    </view>
+    <!-- 热搜榜 -->
+    <view class="hotContainer">
+      <view class="title">热搜榜</view>
+      <!-- 热搜列表 -->
+      <view class="hotList">
+        <view class="hotItem" wx:for="{{hotList}}" wx:key="searchWord"><!--循环遍历数组hotList。searchWord作为唯一值-->
+          <text class="order">{{index + 1}}</text><!--index是下标，默认从0开始-->
+          <text>{{item.searchWord}}</text>
+          <image class="iconImg" wx:if="{{item.iconUrl}}" src="{{item.iconUrl}}"></image><!--wx:if="{{item.iconUrl}}"表示如果为true，就加载-->
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

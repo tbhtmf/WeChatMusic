@@ -1,0 +1,12 @@
+<import src="/template/myTemplate/myTemplate.wxml"/><!--引入模板。第一个/表示根目录-->
+<view class="otherContainer">
+  <!-- 测试模板 -->
+  <view class="otherTitle">注意：这个页面与音乐项目无关。测试使用模板</view>
+  <template is="myTmp" data="{{...person}}"/><!--...是三连运算符，表示拆包-->
+  <view>*******************</view>
+  <view>*******************</view>
+
+  <!-- 测试获取用户唯一标识openId -->
+  <view class="otherTitle">测试获取用户唯一标识openId</view>
+  <button bindtap="handleGetOpenId">获取openId</button>
+</view>

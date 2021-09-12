@@ -1,0 +1,31 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="wrapper">
+    <view class="left-top-sign">LOGIN</view>
+    <view class="welcome">
+      欢迎回来！
+    </view>
+    <view class="input-content">
+      <view class="input-item">
+        <text class="tit">手机号码</text>
+        <!-- input事件是表单上的内容实时发生改变可以触发的，而change是实时改变后失去焦点才能触发。所以这里用input -->
+        <!-- 要实时收集就需要知道表单项的内容实时发生改变，所以需要绑定事件bindinput，与bindinput同类型的还有change事件 -->
+        <input  type="text" placeholder="请输入手机号码" id="phone" bindinput="handleInput"/>
+      </view>
+      <view class="input-item">
+        <text class="tit">密码</text>
+        <input type="password"  placeholder="请输入密码" id="password" bindinput="handleInput"/>
+      </view>
+    </view>
+    <!-- bindtap="login"意思是给这个button绑定点击事件 -->
+    <button class="confirm-btn" bindtap="login">登录</button>
+    <view class="forget-section">
+      忘记密码?
+    </view>
+  </view>
+  <view class="register-section">
+    还没有账号?
+    <text >马上注册</text>
+  </view>
+</view>
+
